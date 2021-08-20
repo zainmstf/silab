@@ -5,6 +5,7 @@ namespace App\Controllers\Dosen;
 use App\Models\Dosen\ModelDashboard;
 use App\Models\Admin\ModelDataPengumuman;
 use App\Models\Admin\ModelPenjadwalan;
+use App\Models\Dosen\ModelJadwalPraktikum;
 use App\Controllers\BaseController;
 
 class Dashboard extends BaseController
@@ -14,6 +15,7 @@ class Dashboard extends BaseController
 		$this->ModelDashboard = new ModelDashboard();
 		$this->ModelDataPengumuman = new ModelDataPengumuman();
 		$this->ModelPenjadwalan = new ModelPenjadwalan();
+		$this->ModelJadwalPraktikum = new ModelJadwalPraktikum();
 
 		helper('form');
 	}
@@ -63,6 +65,14 @@ class Dashboard extends BaseController
 		}
 		session()->setFlashdata('edit', 'Data berhasil diedit !!');
 		return redirect()->to(base_url('dosen/dashboard'));
+	}
+	public function getJumlahMhs($id_jadwal)
+	{
+		return $this->db->table('tbjadwal_mhs')
+			->join('tbljadwal', 'tbljadwal.id_jadwal=tbjadwal_mhs.id_jadwal')
+			->where('tbjadwal_mhs.nidn', session()->get('username'))
+			->where('tbljadwal.id_jadwal', $id_jadwal)
+			->countAllResults();
 	}
 }
 

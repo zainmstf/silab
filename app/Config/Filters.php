@@ -34,8 +34,6 @@ class Filters extends BaseConfig
 				'/',
 				'admin',
 				'dosen',
-
-
 			]],
 			'FilterDosen' => ['except' => [
 				'auth', 'auth/*',
@@ -50,15 +48,15 @@ class Filters extends BaseConfig
 		'after'  => [
 			'FilterMahasiswa' => ['except' => [
 				'home', 'home/*',
-				'mahasiswa', 'mahasiswa/*',
+				'mahasiswa/*',
 			]],
 			'FilterUser' => ['except' => [
 				'home', 'home/*',
-				'admin', 'admin/*',
+				'admin/*',
 			]],
 			'FilterDosen' => ['except' => [
 				'home', 'home/*',
-				'dosen', 'dosen/*',
+				'dosen/*',
 			]],
 			'toolbar',
 			//'honeypot'

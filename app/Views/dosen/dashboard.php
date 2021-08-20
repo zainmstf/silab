@@ -2,17 +2,6 @@
 <!-- iCheck -->
 <link href="<?= base_url('assets/gentelella/vendors/iCheck/skins/flat/green.css') ?>" rel="stylesheet">
 <!-- bootstrap-progressbar -->
-<link href="<?= base_url('assets/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') ?>" rel="stylesheet">
-<!-- JQVMap -->
-<link href="<?= base_url('assets/gentelella/vendors/jqvmap/dist/jqvmap.min.css') ?>" rel="stylesheet" />
-<!-- bootstrap-daterangepicker -->
-<link href="<?= base_url('assets/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css') ?>" rel="stylesheet">
-<!-- bootstrap-datetimepicker -->
-<link href="<?= base_url('assets/gentelella/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') ?>" rel="stylesheet">
-<!-- bootstrap-datetimepicker -->
-<link href="<?= base_url('assets/gentelella/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') ?>" rel="stylesheet">
-<!-- Dropzone.js -->
-<link href="<?= base_url('assets/gentelella/vendors/dropzone/dist/min/dropzone.min.css') ?>" rel="stylesheet">
 <?= $this->endSection() ?>
 
 <?= $this->extend('layouts/master/master_dsn') ?>
@@ -20,20 +9,6 @@
 <?= $this->section('foot') ?>
 <!-- iCheck -->
 <script src="<?= base_url('assets/gentelella/vendors/iCheck/icheck.min.js') ?>"></script>
-<!-- Skycons -->
-<script src="<?= base_url('assets/gentelella/vendors/skycons/skycons.js') ?>"></script>
-<!-- DateJS -->
-<script src="<?= base_url('assets/gentelella/vendors/DateJS/build/date.js') ?>"></script>
-<!-- Flot -->
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.pie.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.time.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.stack.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.resize.js') ?>"></script>
-<!-- Flot plugins -->
-<script src="<?= base_url('assets/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/flot.curvedlines/curvedLines.js') ?>"></script>
 <!-- Datatables -->
 <script src="<?= base_url('assets/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('assets/gentelella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
@@ -50,20 +25,7 @@
 <script src="<?= base_url('assets/gentelella/vendors/jszip/dist/jszip.min.js') ?>"></script>
 <script src="<?= base_url('assets/gentelella/vendors/pdfmake/build/pdfmake.min.js') ?>"></script>
 <script src="<?= base_url('assets/gentelella/vendors/pdfmake/build/vfs_fonts.js') ?>"></script>
-<!-- bootstrap-daterangepicker -->
-<script src="<?= base_url('assets/gentelella/vendors/moment/min/moment.min.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
-<!-- bootstrap-datetimepicker -->
-<script src="<?= base_url('assets/gentelella/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') ?>"></script>
-<!-- jquery.inputmask -->
-<script src="<?= base_url('assets/gentelella/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js') ?>"></script>
-<!-- Dropzone.js -->
-<script src="<?= base_url('assets/gentelella/vendors/dropzone/dist/min/dropzone.min.js') ?>"></script>
 <script>
-  $('#myDatepicker2').datetimepicker({
-    format: 'DD.MM.YYYY'
-  });
-
   function myFunction() {
     var x = document.getElementById("password");
     if (x.type === "password") {
@@ -72,6 +34,21 @@
       x.type = "password";
     }
   }
+</script>
+<script>
+  $(document).ready(function() {
+    key = $('#jadwalpraktikum').attr('data-key');
+    for (let index = 0; index <= key; index++) {
+      var id_jadwal = $('.jadwal' + index).val(); //1
+      var index2 = index - 1; //0
+      var id_jadwal2 = $('.jadwal' + index2).val(); //0
+      if (id_jadwal == id_jadwal2) { //if id_jadwal2 ==id_jadwal1
+        $('.jadwalpraktikum' + index).hide();
+      } else {
+        $('.jadwalpraktikum' + index).show();
+      }
+    }
+  })
 </script>
 <?= $this->endSection() ?>
 
@@ -292,10 +269,13 @@
 
           <div class="">
             <ul class="to_do">
-              <?php foreach ($jadwal as $key => $value) { ?>
-                <li>
+              <?php
+              $no = 0;
+              foreach ($jadwal as $key => $value) {
+                $no++; ?>
+                <li id="jadwalpraktikum" class="jadwalpraktikum<?= $no ?>" data-key='<?= $no ?>'>
                   <p>
-                    <input type="checkbox" class="flat" <?= ($value['tgl_pelak'] >  date('Y-m-d'))  ? "checked" : "" ?>> <?= $value['matkul'] . ' ' . $value['ruang'] . ' - ' . date("l, d F Y", strtotime($value['tgl_pelak'])) . ' ' . $value['waktu'] ?>
+                    <input type="checkbox" class="flat jadwal<?= $value['id_jadwal'] ?>" <?= ($value['tgl_pelak'] >  date('Y-m-d'))  ? "checked" : "" ?>> <?= $value['matkul'] . ' ' . $value['ruang'] . ' - ' . date("l, d F Y", strtotime($value['tgl_pelak'])) . ' ' . $value['waktu'] ?>
                   </p>
                 </li>
               <?php } ?>
