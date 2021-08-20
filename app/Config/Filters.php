@@ -48,7 +48,7 @@ class Filters extends BaseConfig
 		'after'  => [
 			'FilterMahasiswa' => ['except' => [
 				'home', 'home/*',
-				'mahasiswa/*',
+				'mahasiswa', 'mahasiswa/*',
 			]],
 			'FilterUser' => ['except' => [
 				'home', 'home/*',
