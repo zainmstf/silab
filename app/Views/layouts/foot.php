@@ -11,3 +11,4 @@
 
 <!-- Custom Theme Scripts -->
 <script src="<?= base_url('assets/gentelella/js/gentelella.js') ?>"></script>
+<script src="<?= base_url('assets/js/custom.js') ?>"></script>

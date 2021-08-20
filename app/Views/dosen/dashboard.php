@@ -255,62 +255,22 @@
           <div class="dashboard-widget-content">
 
             <ul class="list-unstyled timeline widget">
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                    </h2>
-                    <div class="byline">
-                      <span>13 hours ago</span> by <a>Jane Smith</a>
+              <?php foreach ($datapengumuman as $key => $value) { ?>
+                <li>
+                  <div class="block">
+                    <div class="block_content">
+                      <h2 class="title">
+                        <a><?= $value['judul'] ?></a>
+                      </h2>
+                      <div class="byline">
+                        <span><?= $value['tanggal'] . ' ' . $value['waktu'] ?></span> by <a><?= $value['penulis'] ?></a>
+                      </div>
+                      <p class="excerpt"><?= $value['isi'] ?></a>
+                      </p>
                     </div>
-                    <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                    </p>
                   </div>
-                </div>
-              </li>
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                    </h2>
-                    <div class="byline">
-                      <span>13 hours ago</span> by <a>Jane Smith</a>
-                    </div>
-                    <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                    </h2>
-                    <div class="byline">
-                      <span>13 hours ago</span> by <a>Jane Smith</a>
-                    </div>
-                    <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                    </h2>
-                    <div class="byline">
-                      <span>13 hours ago</span> by <a>Jane Smith</a>
-                    </div>
-                    <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                    </p>
-                  </div>
-                </div>
-              </li>
+                </li>
+              <?php } ?>
             </ul>
           </div>
         </div>
@@ -321,7 +281,7 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Jadwal Mahasiswa</h2>
+          <h2>Jadwal Dosen</h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -332,21 +292,18 @@
 
           <div class="">
             <ul class="to_do">
-              <li>
-                <p>
-                  <input type="checkbox" class="flat" disabled checked> Schedule meeting with new client
-                </p>
-              </li>
-              <li>
-                <p>
-                  <input type="checkbox" class="flat" disabled> Create email address for new intern
-                </p>
-              </li>
+              <?php foreach ($jadwal as $key => $value) { ?>
+                <li>
+                  <p>
+                    <input type="checkbox" class="flat" <?= ($value['tgl_pelak'] >  date('Y-m-d'))  ? "checked" : "" ?>> <?= $value['matkul'] . ' ' . $value['ruang'] . ' - ' . date("l, d F Y", strtotime($value['tgl_pelak'])) . ' ' . $value['waktu'] ?>
+                  </p>
+                </li>
+              <?php } ?>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <!-- Jadwal Mahasiswa End -->
+    <!-- Jadwal Dosen End -->
   </div>
   <?= $this->endSection() ?>

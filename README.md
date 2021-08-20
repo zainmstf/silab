@@ -16,7 +16,7 @@ The user guide corresponding to this version of the framework can be found
 
 ## Installation & updates
 
-`git clone https://github.com/awanz/ci4-gentelella.git`
+`git clone https://github.com/zainmstf/silab.git`
 
 `composer update` 
 

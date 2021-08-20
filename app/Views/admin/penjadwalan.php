@@ -65,7 +65,7 @@
   });
 
   $('.waktu_pelaksanaan').datetimepicker({
-    format: 'hh:mm A'
+    format: 'HH:mm'
   });
 
   $(document).ready(function() {
@@ -108,7 +108,7 @@
   });
 
   $(document).ready(function() {
-    $('.id_matkul2').change(function() {
+    $('.id_matkul2').mouseover(function() {
       var key = $(this).attr('data-key');
       var id_matkul2 = $('#id_matkul' + key).val();
       $.ajax({
@@ -128,7 +128,7 @@
   }
 
   $(document).ready(function() {
-    $('.id_jadwal2').change(function() {
+    $('.id_jadwal2').mouseover(function() {
       var key = $(this).attr('data-key');
       var id_jadwal2 = $('#id_jadwal' + key).val();
       $.ajax({
@@ -378,7 +378,7 @@
                       <select name="id_matkul" class="form-control matkul id_matkul2" id="id_matkul<?= $no ?>" data-key="<?= $no ?>">
                         <option value="">-- Pilih Matkul --</option>
                         <?php foreach ($matkul as $key => $data) { ?>
-                          <option value="<?= $data['id_matkul'] ?>"><?= $data['matkul'] ?></option>
+                          <option value="<?= $data['id_matkul'] ?>" <?= ($data['id_matkul'] == $value['id_matkul']) ? "selected" : "" ?>><?= $data['matkul'] ?></option>
                         <?php } ?>
                       </select>
                     </div>
@@ -390,6 +390,9 @@
                     <div class="col-md-9 col-xs-12">
                       <select name="id_jadwal" class="form-control id_jadwal2" id="id_jadwal<?= $no ?>" data-key="<?= $no ?>">>
                         <option value="" selected>-- Pilih Jadwal --</option>
+                        <?php foreach ($jadwal as $key => $data) { ?>
+                          <option value="<?= $data['id_jadwal'] ?>" <?= ($data['id_jadwal'] == $value['id_jadwal']) ? "selected" : "" ?>><?= $data['matkul'] . ' ' .  $value['ruang'] . ' - ' . date("l, d F Y", strtotime($value['tgl_pelak'])) ?></option>
+                        <?php } ?>
                       </select>
                     </div>
                   </div>

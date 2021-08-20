@@ -31,7 +31,7 @@ class DataPengumuman extends BaseController
 			'isi' => $this->request->getPost('isi'),
 			'tanggal' => $this->request->getPost('tanggal'),
 			'waktu' => $this->request->getPost('waktu'),
-			'penulis' => $this->request->getPost('penulis'),
+			'penulis' => session()->get('nama'),
 		];
 		$this->ModelDataPengumuman->insertData($data);
 

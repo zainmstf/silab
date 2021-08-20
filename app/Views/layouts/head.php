@@ -9,3 +9,4 @@
 
 <!-- Custom Theme Style -->
 <link href="<?= base_url('assets/gentelella/css/gentelella.css') ?>" rel="stylesheet">
+<link rel="stylesheet" href="<?= base_url('assets/css/custom.css') ?>">

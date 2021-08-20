@@ -1,12 +1,9 @@
 <?= $this->section('head') ?>
-<!-- iCheck -->
-<link href="<?= base_url('assets/gentelella/vendors/iCheck/skins/flat/green.css') ?>" rel="stylesheet">
-<!-- bootstrap-progressbar -->
-<link href="<?= base_url('assets/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') ?>" rel="stylesheet">
-<!-- JQVMap -->
-<link href="<?= base_url('assets/gentelella/vendors/jqvmap/dist/jqvmap.min.css') ?>" rel="stylesheet" />
 <!-- bootstrap-daterangepicker -->
 <link href="<?= base_url('assets/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css') ?>" rel="stylesheet">
+<!-- bootstrap-progressbar -->
+<link href="<?= base_url('assets/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') ?>" rel="stylesheet">
+
 <!-- FullCalendar -->
 <link href="<?= base_url('assets/gentelella/vendors/fullcalendar/dist/fullcalendar.min.css') ?>" rel="stylesheet">
 <link href="<?= base_url('assets/gentelella/vendors/fullcalendar/dist/fullcalendar.print.css') ?>" rel="stylesheet" media="print">
@@ -17,30 +14,8 @@
 <?= $this->section('foot') ?>
 <!-- Chart.js -->
 <script src="<?= base_url('assets/gentelella/vendors/Chart.js/dist/Chart.min.js') ?>"></script>
-<!-- gauge.js -->
-<script src="<?= base_url('assets/gentelella/vendors/gauge.js/dist/gauge.min.js') ?>"></script>
 <!-- bootstrap-progressbar -->
 <script src="<?= base_url('assets/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') ?>"></script>
-<!-- iCheck -->
-<script src="<?= base_url('assets/gentelella/vendors/iCheck/icheck.min.js') ?>"></script>
-<!-- Skycons -->
-<script src="<?= base_url('assets/gentelella/vendors/skycons/skycons.js') ?>"></script>
-<!-- Flot -->
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.pie.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.time.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.stack.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.resize.js') ?>"></script>
-<!-- Flot plugins -->
-<script src="<?= base_url('assets/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/flot.curvedlines/curvedLines.js') ?>"></script>
-<!-- DateJS -->
-<script src="<?= base_url('assets/gentelella/vendors/DateJS/build/date.js') ?>"></script>
-<!-- JQVMap -->
-<script src="<?= base_url('assets/gentelella/vendors/jqvmap/dist/jquery.vmap.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') ?>"></script>
 <!-- bootstrap-daterangepicker -->
 <script src="<?= base_url('assets/gentelella/vendors/moment/min/moment.min.js') ?>"></script>
 <script src="<?= base_url('assets/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
@@ -50,40 +25,25 @@
 <?php foreach ($matkul as $key => $value) {
   $mtkl[] = $value['matkul'];
 } ?>
-
 <script>
-  var ctx = document.getElementById('lineChart')
+  var ctx = document.getElementById('linechart')
   var lineChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: <?php echo json_encode($mtkl); ?>,
       datasets: [{
-          label: 'Mahasiswa Laki-laki',
-          backgroundColor: 'rgba(38, 185, 154, 0.31)',
-          borderColor: 'rgba(38, 185, 154, 0.7)',
-          pointBorderColor: 'rgba(38, 185, 154, 0.7)',
-          pointBackgroundColor: 'rgba(38, 185, 154, 0.7)',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgba(220,220,220,1)',
-          pointBorderWidth: 1,
-          data: [<?php echo $matkulmhsl ?>,
-            <?php echo $matkulmhsl2 ?>
-          ],
-        },
-        {
-          label: 'Mahasiswa Perempuan',
-          backgroundColor: 'rgba(3, 88, 106, 0.3)',
-          borderColor: 'rgba(3, 88, 106, 0.70)',
-          pointBorderColor: 'rgba(3, 88, 106, 0.70)',
-          pointBackgroundColor: 'rgba(3, 88, 106, 0.70)',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgba(151,187,205,1)',
-          pointBorderWidth: 1,
-          data: [<?php echo $matkulmhsp ?>,
-            <?php echo $matkulmhsp2 ?>
-          ],
-        },
-      ],
+        label: 'Mahasiswa Laki-laki',
+        backgroundColor: 'rgba(38, 185, 154, 0.31)',
+        borderColor: 'rgba(38, 185, 154, 0.7)',
+        pointBorderColor: 'rgba(38, 185, 154, 0.7)',
+        pointBackgroundColor: 'rgba(38, 185, 154, 0.7)',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointBorderWidth: 1,
+        data: [<?php echo $matkulmhsl ?>,
+          <?php echo $matkulmhsp ?>
+        ],
+      }, ],
     },
   });
 </script>
@@ -160,9 +120,8 @@
           <h3>Data Mahasiswa Yang Mengikuti Mata Kuliah</h3>
         </div>
       </div>
-
       <div class="col-md-9 col-sm-9 col-xs-12">
-        <canvas id="lineChart" class="demo-placeholder">
+        <canvas id="linechart" class="demo-placeholder">
         </canvas>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
@@ -200,7 +159,7 @@
     <div class="col-md-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Jadwal praktikum</h2>
+          <h2>Kalendar</h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>

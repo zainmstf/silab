@@ -123,7 +123,7 @@
                     <div class="row">
                       <label class="col-md-3 col-xs-12" for="penulis">Penulis</label>
                       <div class="col-md-9 col-xs-12">
-                        <input name="penulis" type="email" class="form-control" value="<?= session()->get('nama_admin') ?>" readonly>
+                        <input name="penulis" type="email" class="form-control" value="<?= session()->get('nama') ?>" readonly>
                       </div>
                     </div>
                   </div>
@@ -248,7 +248,7 @@
                   <div class="row">
                     <label class="col-md-3 col-xs-12" for="penulis">Penulis</label>
                     <div class="col-md-9 col-xs-12">
-                      <input name="penulis" type="email" class="form-control" value="<?= session()->get('nama_admin') ?>" readonly>
+                      <input name="penulis" type="email" class="form-control" value="<?= session()->get('nama') ?>" readonly>
                     </div>
                   </div>
                 </div>

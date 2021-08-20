@@ -20,7 +20,7 @@ class DaftarPraktikum extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Data Mahasiswa',
+			'title' => 'Daftar Praktikum',
 			'daftarpraktikum' => $this->ModelDaftarPraktikum->getDataPraktikum(),
 			'matkul' => $this->ModelDataMatkul->getAllData()
 		];

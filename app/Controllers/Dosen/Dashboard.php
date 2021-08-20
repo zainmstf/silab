@@ -3,6 +3,8 @@
 namespace App\Controllers\Dosen;
 
 use App\Models\Dosen\ModelDashboard;
+use App\Models\Admin\ModelDataPengumuman;
+use App\Models\Admin\ModelPenjadwalan;
 use App\Controllers\BaseController;
 
 class Dashboard extends BaseController
@@ -10,14 +12,19 @@ class Dashboard extends BaseController
 	public function __construct()
 	{
 		$this->ModelDashboard = new ModelDashboard();
+		$this->ModelDataPengumuman = new ModelDataPengumuman();
+		$this->ModelPenjadwalan = new ModelPenjadwalan();
+
 		helper('form');
 	}
 
 	public function index()
 	{
 		$data = [
-			'title' => 'Data Dosen',
-			'datadsn' => $this->ModelDashboard->getDataDosen()
+			'title' => 'Dashboard Dosen',
+			'datadsn' => $this->ModelDashboard->getDataDosen(),
+			'datapengumuman' => $this->ModelDataPengumuman->getDataPengumuman(),
+			'jadwal' => $this->ModelPenjadwalan->getJadwalDsn()
 		];
 		return view('dosen/dashboard', $data);
 	}

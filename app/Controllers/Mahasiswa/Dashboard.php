@@ -3,21 +3,27 @@
 namespace App\Controllers\Mahasiswa;
 
 use App\Models\Mahasiswa\ModelDashboard;
+use App\Models\Admin\ModelDataPengumuman;
 use App\Controllers\BaseController;
+use App\Models\Admin\ModelPenjadwalan;
 
 class Dashboard extends BaseController
 {
 	public function __construct()
 	{
 		$this->ModelDashboard = new ModelDashboard();
+		$this->ModelDataPengumuman = new ModelDataPengumuman();
+		$this->ModelPenjadwalan = new ModelPenjadwalan();
 		helper('form');
 	}
 
 	public function index()
 	{
 		$data = [
-			'title' => 'Data Mahasiswa',
-			'datamhs' => $this->ModelDashboard->getDataMahasiswa()
+			'title' => 'Dashboard Mahasiswa',
+			'datamhs' => $this->ModelDashboard->getDataMahasiswa(),
+			'datapengumuman' => $this->ModelDataPengumuman->getDataPengumuman(),
+			'jadwal' => $this->ModelPenjadwalan->getJadwalMhs()
 		];
 		// print_r($data['datamhs']);
 		return view('mahasiswa/dashboard', $data);

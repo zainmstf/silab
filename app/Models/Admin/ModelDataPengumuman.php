@@ -30,11 +30,11 @@ class ModelDataPengumuman extends Model
 			->where('id_pengumuman', $data['id_pengumuman'])
 			->delete($data);
 	}
-	public function detailData($id_pengumuman)
+	public function getDataPengumuman()
 	{
 		return $this->db->table('tbpengumuman')
-			->where('id_pengumuman', $id_pengumuman)
-			->get()
-			->getRowArray();
+			->orderBy('id_pengumuman', 'DESC')
+			->get(0, 2)
+			->getResultArray();
 	}
 }

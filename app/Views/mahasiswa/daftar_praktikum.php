@@ -1,39 +1,17 @@
 <?= $this->section('head') ?>
-<!-- iCheck -->
-<link href="<?= base_url('assets/gentelella/vendors/iCheck/skins/flat/green.css') ?>" rel="stylesheet">
-<!-- bootstrap-progressbar -->
-<link href="<?= base_url('assets/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') ?>" rel="stylesheet">
-<!-- JQVMap -->
-<link href="<?= base_url('assets/gentelella/vendors/jqvmap/dist/jqvmap.min.css') ?>" rel="stylesheet" />
 <!-- bootstrap-daterangepicker -->
 <link href="<?= base_url('assets/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css') ?>" rel="stylesheet">
 <!-- bootstrap-datetimepicker -->
 <link href="<?= base_url('assets/gentelella/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') ?>" rel="stylesheet">
 <!-- bootstrap-datetimepicker -->
 <link href="<?= base_url('assets/gentelella/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') ?>" rel="stylesheet">
-<!-- Dropzone.js -->
-<link href="<?= base_url('assets/gentelella/vendors/dropzone/dist/min/dropzone.min.css') ?>" rel="stylesheet">
 <?= $this->endSection() ?>
 
 <?= $this->extend('layouts/master/master_mhs') ?>
 
 <?= $this->section('foot') ?>
-<!-- iCheck -->
-<script src="<?= base_url('assets/gentelella/vendors/iCheck/icheck.min.js') ?>"></script>
-<!-- Skycons -->
-<script src="<?= base_url('assets/gentelella/vendors/skycons/skycons.js') ?>"></script>
 <!-- DateJS -->
 <script src="<?= base_url('assets/gentelella/vendors/DateJS/build/date.js') ?>"></script>
-<!-- Flot -->
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.pie.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.time.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.stack.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/Flot/jquery.flot.resize.js') ?>"></script>
-<!-- Flot plugins -->
-<script src="<?= base_url('assets/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js') ?>"></script>
-<script src="<?= base_url('assets/gentelella/vendors/flot.curvedlines/curvedLines.js') ?>"></script>
 <!-- Datatables -->
 <script src="<?= base_url('assets/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('assets/gentelella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
@@ -55,10 +33,6 @@
 <script src="<?= base_url('assets/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
 <!-- bootstrap-datetimepicker -->
 <script src="<?= base_url('assets/gentelella/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') ?>"></script>
-<!-- jquery.inputmask -->
-<script src="<?= base_url('assets/gentelella/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js') ?>"></script>
-<!-- Dropzone.js -->
-<script src="<?= base_url('assets/gentelella/vendors/dropzone/dist/min/dropzone.min.js') ?>"></script>
 <script>
   $('.tglbayar').datetimepicker({
     format: 'YYYY-MM-DD'
@@ -164,7 +138,7 @@
                     <div class="row">
                       <label class="col-md-3 col-xs-12" for="nominal">Nominal Bayar</label>
                       <div class="col-md-9 col-xs-12">
-                        <input value="0" name="nominal" type="text" class="form-control" data-inputmask="'mask': '999.999'" id="nominal_bayar">
+                        <input value="0" name="nominal" type="text" class="form-control" id="nominal_bayar">
                         <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                       </div>
                     </div>
@@ -242,7 +216,7 @@
             <?php
             foreach ($daftarpraktikum as $key => $value) { ?>
               <tr>
-                <td><?= $value['tgl_daftar'] ?></td>
+                <td><?= date("l, d F Y", strtotime($value['tgl_daftar'])) ?></td>
                 <td><?= $value['matkul'] ?></td>
                 <td><?= $value['biaya'] ?></td>
                 <td><?= ($value['tgl_bayar'] == "0000-00-00") ? "Belum Bayar" : $value['tgl_bayar'] ?></td>
@@ -345,7 +319,7 @@
                   <div class="row">
                     <label class="col-md-3 col-xs-12" for="nominal">Nominal Bayar</label>
                     <div class="col-md-9 col-xs-12">
-                      <input value="<?= ($value['nominal_bayar'] == '0') ? '' : $value['nominal_bayar'] ?>" name="nominal" type="text" class="form-control" data-inputmask="'mask': '999.999'" id="nominal_bayar">
+                      <input value="<?= ($value['nominal_bayar'] == '0') ? '' : $value['nominal_bayar'] ?>" name="nominal" type="text" class="form-control" id="nominal_bayar">
                       <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                     </div>
                   </div>
@@ -369,29 +343,6 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-success">Simpan</button>
-              </div>
-              <?php echo form_close() ?>
-            </div>
-          </div>
-        </div>
-        <!-- Modal Edit Mahasiswa End -->
-      <?php } ?>
-      <?php foreach ($daftarpraktikum as $key => $value) { ?>
-        <!-- Modal Delete Mahasiswa -->
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="delete<?= $value['id_pendaftaran'] ?>">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Hapus Data Mahasiswa</h4>
-              </div>
-              <div class="modal-body">
-                Apakah anda ingin menghapus data praktikum dengan id praktikum <b> <?= $value['id_pendaftaran'] ?></b> ?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="<?= base_url('admin/daftarpraktikum/deleteData/' . $value['id_pendaftaran']) ?>" class="btn btn-danger">Hapus</a>
               </div>
               <?php echo form_close() ?>
             </div>
