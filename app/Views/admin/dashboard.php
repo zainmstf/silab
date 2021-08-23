@@ -43,7 +43,19 @@
         data: [<?php echo $matkulmhsl ?>,
           <?php echo $matkulmhsp ?>
         ],
-      }, ],
+      }, {
+        label: 'Mahasiswa Perempuan',
+        backgroundColor: 'rgba(3, 88, 106, 0.3)',
+        borderColor: 'rgba(3, 88, 106, 0.70)',
+        pointBorderColor: 'rgba(3, 88, 106, 0.70)',
+        pointBackgroundColor: 'rgba(3, 88, 106, 0.70)',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(151,187,205,1)',
+        pointBorderWidth: 1,
+        data: [<?php echo $matkulmhsp ?>,
+          <?php echo $matkulmhsp ?>
+        ],
+      }],
     },
   });
 </script>

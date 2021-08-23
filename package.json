@@ -19,8 +19,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "laravel-mix": "^5.0.5"
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^5.0.9"
   },
   "dependencies": {
     "gentelella": "^1.4.0"

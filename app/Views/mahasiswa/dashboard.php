@@ -288,4 +288,5 @@
     </div>
     <!-- Jadwal Mahasiswa End -->
   </div>
-  <?= $this->endSection() ?>
+</div>
+<?= $this->endSection() ?>
